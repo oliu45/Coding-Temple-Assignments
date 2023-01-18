@@ -30,14 +30,34 @@ class ParkingGarage():
             self.tickets.append(self.tickets[-1] + 1)
             return "Thank you, have a nice day!"
     
+ticketsList = [1, 2, 3]
+parkingSpacesList = [101, 202, 303]
+ticketStatus = {"Paid": False}
 
-newGarage = ParkingGarage([1, 2, 3], [1, 2, 3], {"Paid": False})
+newGarage = ParkingGarage(ticketsList, parkingSpacesList, ticketStatus)
 
-newGarage.takeTicket()
+def run():
+    print("Ticket taken")
 
-print(newGarage.payForParking())
+    newGarage.takeTicket()
 
-print(newGarage.leaveGarage())
+    print("Ticket amount decreased:", newGarage.tickets)
 
+    print("Parking spaces decreased:", newGarage.parkingSpaces)
 
+    print("Paid status:", newGarage.currentTicket)
 
+    pay = newGarage.payForParking()
+
+    while pay == "":
+        pay = newGarage.payForParking()
+    
+    print("New Paid Status:", newGarage.currentTicket)
+
+    print(newGarage.leaveGarage())
+
+    print("Ticket amount changed:", newGarage.tickets)
+
+    print("Parking spaces changed:", newGarage.parkingSpaces)
+
+run()
